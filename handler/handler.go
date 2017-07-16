@@ -3,9 +3,28 @@ package handler
 
 import (
 	"net/http"
+	"io"
+	"html/template"
 
 	"github.com/labstack/echo"
+
 )
+
+type Template struct {
+	templates *template.Template
+}
+
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
+
+func Temlate()*Template{
+	t := &Template{
+		templates: template.Must(template.ParseGlob("html/*.gtpl")),
+	}
+
+	return t
+}
 
 func LoginHtml(c echo.Context)error{
 	return c.Render(http.StatusOK,"login.gtpl",nil)
@@ -15,9 +34,5 @@ func RegisterHtml(c echo.Context)error{
 	return c.Render(http.StatusOK,"register.gtpl",nil)
 }
 
-//这里做显示页面模板的渲染，加上事件map 作为 render函数的参数
-func ShowHtml(c echo.Context)error{
 
-	return
-}
 

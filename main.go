@@ -1,14 +1,17 @@
 package main
 
 import (
-	"ToDoListServer/router"
-
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+
+	"ToDoListServer/handler"
+	"ToDoListServer/router"
 )
+
 
 func main() {
 	e := echo.New()
+	e.Renderer = handler.Temlate()
 
 	e.Use(middleware.Recover())
 

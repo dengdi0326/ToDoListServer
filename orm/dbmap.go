@@ -18,16 +18,12 @@ func (db *dBMap) Get(user string) (string, bool) {
 	defer db.mutex.RUnlock()
 
 	bool := false
-
 	for name,_ := range db.usermap{
-		if name == user{
+		if user == name{
 			bool = true
-			break
+			return db.usermap[user],bool
 		}
-
-		return db.usermap[user],bool
 	}
-
 	return "",bool
 }
 
