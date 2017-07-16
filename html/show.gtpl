@@ -9,7 +9,7 @@
     <br>
     {{ end }}
     <br>
-    事情:<input type="text" name="message">
+    事情:<input type="text" name="event">
     <input type="submit" value="添加">
 </form>
 </body>

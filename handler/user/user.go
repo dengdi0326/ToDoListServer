@@ -1,21 +1,32 @@
 package user
 
 import (
+	"net/http"
+
 	"github.com/labstack/echo"
 
 	"ToDoListServer/model/user"
 	"ToDoListServer/orm"
+
 )
 
 // 这里做从 request 获取传入参数，并调用model中的获取 Map 中对应数据 并比较的处理。
-func Login(c echo.Context) error {
+func Login(c echo.Context){
 
-	pass:= user.Login(c.FormValue("name"))
+	pass := user.Login(c.FormValue("name"))
+	cookie := new(http.Cookie)
+	cookie.Name = "username"
+	cookie.Value = c.FormValue("name")
+	c.SetCookie(cookie)
 
-	if c.FormValue("pass") != pass{
-		return error("not exsit the user")
+	if pass == nil{
+		http.Redirect(c.Response(),c.Request(),"/register",http.StatusSeeOther)
+	}else {
+		if c.FormValue("pass") == pass{
+			http.Redirect(c.Response(),c.Request(),"/show",http.StatusSeeOther)
+		}
+		http.Redirect(c.Response(),c.Request(),"/",http.StatusSeeOther)
 	}
-	return nil
 }
 
 //这里做从 request 获取传入参数，并调用orm 中的 创建用户  并添加用户

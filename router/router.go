@@ -5,6 +5,7 @@ import (
 	"ToDoListServer/handler/event"
 
 	"github.com/labstack/echo"
+	"ToDoListServer/handler"
 )
 
 func InitRouter(e *echo.Echo) {
@@ -13,8 +14,10 @@ func InitRouter(e *echo.Echo) {
 	}
 
 	// user
-	e.POST("/v1/user/login", user.Login)
-
+	e.POST("/", user.Login)
+	e.GET("/",handler.LoginHtml)
+	e.POST("/register",user.Register)
+	e.GET("/register",handler.RegisterHtml)
 	// event
 	e.POST("/v1/event/create", event.Create)
 }
