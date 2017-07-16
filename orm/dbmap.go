@@ -28,7 +28,7 @@ func (db *dBMap) Get(user string) (string, bool) {
 		return db.usermap[user],bool
 	}
 
-	return nil,bool
+	return "",bool
 }
 
 func (db *dBMap) Creater(user,pass string)bool{

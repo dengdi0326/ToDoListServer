@@ -19,7 +19,7 @@ func Login(c echo.Context){
 	cookie.Value = c.FormValue("name")
 	c.SetCookie(cookie)
 
-	if pass == nil{
+	if pass == ""{
 		http.Redirect(c.Response(),c.Request(),"/register",http.StatusSeeOther)
 	}else {
 		if c.FormValue("pass") == pass{

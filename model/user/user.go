@@ -15,5 +15,5 @@ func Login(username string)string {
 	if bool == true{
 		return password
 	}
-	return nil
+	return ""
 }
