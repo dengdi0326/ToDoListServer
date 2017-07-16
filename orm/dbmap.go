@@ -32,6 +32,8 @@ func (db *dBMap) Get(user string) (string, bool) {
 }
 
 func (db *dBMap) Creater(user,pass string)bool{
+	db.mutex.RLock()
+	defer db.mutex.RUnlock()
 
 	db.usermap[user] = pass
 
