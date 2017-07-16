@@ -16,13 +16,24 @@ type dBMap struct {
 func (db *dBMap) Get(user string) (string, bool) {
 	db.mutex.RLock()
 	defer db.mutex.RUnlock()
-	bool:=false
-	for name,_:=range db.usermap{
-		if name==user{
-			bool=true
+
+	bool := false
+
+	for name,_ := range db.usermap{
+		if name == user{
+			bool = true
 			break
 		}
+
 		return db.usermap[user],bool
 	}
+
 	return nil,bool
+}
+
+func (db *dBMap) Creater(user,pass string)bool{
+
+	db.usermap[user] = pass
+
+	return true
 }
