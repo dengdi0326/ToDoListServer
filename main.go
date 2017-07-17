@@ -12,7 +12,7 @@ import (
 func main() {
 	e := echo.New()
 	e.Renderer = handler.Temlate()
-	e.Renderer = event.Temlate()
+	e.Renderer = handler.Temlate()
 	e.Use(middleware.Recover())
 
 	router.InitRouter(e)
