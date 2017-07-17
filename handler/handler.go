@@ -32,3 +32,7 @@ func LoginHtml(c echo.Context) error {
 func RegisterHtml(c echo.Context) error {
 	return c.Render(http.StatusOK, "register.gtpl", nil)
 }
+
+func Show(c echo.Context) error {
+	return c.Render(http.StatusOK, "show.gtpl", nil)
+}

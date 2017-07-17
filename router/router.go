@@ -17,8 +17,9 @@ func InitRouter(e *echo.Echo) {
 	e.POST("/", user.Login)
 	e.GET("/", handler.LoginHtml)
 	e.POST("/register", user.Register)
-	e.GET("/register", handler.RegisterHtml) // event
-	e.GET("/show", event.Show)
+	e.GET("/register", handler.RegisterHtml)
+	//event
+	e.GET("/show", handler.Show)
 	e.POST("/show", event.Create)
 
 }
