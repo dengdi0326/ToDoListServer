@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo/middleware"
 
 	"ToDoListServer/handler"
-	"ToDoListServer/handler/event"
+	
 	"ToDoListServer/router"
 )
 
