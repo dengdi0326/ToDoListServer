@@ -1,11 +1,11 @@
 package router
 
 import (
-	"ToDoListServer/handler/user"
 	"ToDoListServer/handler/event"
+	"ToDoListServer/handler/user"
 
-	"github.com/labstack/echo"
 	"ToDoListServer/handler"
+	"github.com/labstack/echo"
 )
 
 func InitRouter(e *echo.Echo) {
@@ -15,9 +15,10 @@ func InitRouter(e *echo.Echo) {
 
 	// user
 	e.POST("/", user.Login)
-	e.GET("/",handler.LoginHtml)
-	e.POST("/register",user.Register)
-	e.GET("/register",handler.RegisterHtml)
-	// event
-	e.POST("/v1/event/create", event.Create)
+	e.GET("/", handler.LoginHtml)
+	e.POST("/register", user.Register)
+	e.GET("/register", handler.RegisterHtml) // event
+	e.GET("/show", event.Show)
+	e.POST("/show", event.Create)
+
 }

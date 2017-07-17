@@ -5,14 +5,14 @@ import (
 	"github.com/labstack/echo/middleware"
 
 	"ToDoListServer/handler"
+	"ToDoListServer/handler/event"
 	"ToDoListServer/router"
 )
-
 
 func main() {
 	e := echo.New()
 	e.Renderer = handler.Temlate()
-
+	e.Renderer = event.Temlate()
 	e.Use(middleware.Recover())
 
 	router.InitRouter(e)
